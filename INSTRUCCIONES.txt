@@ -1,0 +1,19 @@
+INSTRUCCIONES
+- Crear un usuario DB_CONTROL_CITAS con contraseña 123
+- Tablespace USERS
+- El usuario debe tener todos los roles asignados, así no te complicas la vida
+
+CAMBIOS
+
+Base de datos
+- Modificación de algunos campos en las tablas
+- Modificación de relación entre tablas
+- Para los id de cada tabla es tipo numérico y se maneja con secuencias
+- Para CODIGO de cada tabla es tipo VARCHAR
+
+Requerimiento
+- RF02
+	* Para registrar: existe un formulario donde se llena la información y se registra
+	* Para editar: seleccionar un registro de la tabla, se cargará automaticamente los datos en el formulario, se modifican los datos necesarios y se guarda
+	* Para eliminar: seleccionar un registro de la tabla, pulsar el botón eliminar, con esto se actualizará el status a Baja (Eliminación lógica) 
+	
