@@ -6,20 +6,33 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-    private static final String user = "db_control_citas";
-    private static final String password = "123";
+    private static final String user = "sys as sysdba";
+    private static Connection conn = null;
+   private static  String base_datos = "xe";
+    // private String url,user,pass;
+    private static String url = "jdbc:oracle:thin:@149.56.47.191:1521:"+base_datos;
+  //  private static String user = "sys as sysdba";
+    private static String pass = "oracle";
 
-    public static Connection getConnection() {
 
-        Connection conexion = null;
+
+    public static Connection getConnection()
+    {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", user, password);
-        } catch (ClassNotFoundException | SQLException ex) {
-            System.out.println("No se conectò" + ex.getMessage());
-        }
+            Class.forName("oracle.jdbc.OracleDriver");
+            conn = DriverManager.getConnection(url, "sys as sysdba", pass);
+            conn.setAutoCommit(false);
+            if (conn != null) {
+                System.out.println("Conexion exitosa");
+            }else{
+                System.out.println("Error: no se logro la conexion a la base de datos");
+            }
 
-        return conexion;
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error: no se logro la conexion a la base de datos");
+        }
+        return conn;
     }
 
+}
 }
